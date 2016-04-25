@@ -35,6 +35,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "cmsis_os.h"
+#include <stdio.h>
 
 /* USER CODE BEGIN Includes */     
 
@@ -99,7 +100,8 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    printf("Only Task says hello\r\n");
+    osDelay(3000);
   }
   /* USER CODE END StartDefaultTask */
 }
