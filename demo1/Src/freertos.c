@@ -36,13 +36,14 @@
 #include "task.h"
 #include "cmsis_os.h"
 #include <stdio.h>
+#include "threaddemo.h"
 
 /* USER CODE BEGIN Includes */     
 
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
-osThreadId defaultTaskHandle;
+TaskHandle_t task1,task2;
 
 /* USER CODE BEGIN Variables */
 
@@ -80,8 +81,8 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+  xTaskCreate( task1_entry, "Task1", 128, NULL, tskIDLE_PRIORITY, &task1); 
+  xTaskCreate( task2_entry, "Task2", 128, NULL, tskIDLE_PRIORITY, &task2); 
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -90,20 +91,6 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
-}
-
-/* StartDefaultTask function */
-void StartDefaultTask(void const * argument)
-{
-
-  /* USER CODE BEGIN StartDefaultTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    printf("Only Task says hello\r\n");
-    osDelay(3000);
-  }
-  /* USER CODE END StartDefaultTask */
 }
 
 /* USER CODE BEGIN Application */

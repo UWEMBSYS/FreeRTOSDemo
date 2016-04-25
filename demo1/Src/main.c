@@ -35,15 +35,16 @@
 #include "cmsis_os.h"
 #include "gpio.h"
 
+    
 /* USER CODE BEGIN Includes */
-
+#include "threaddemo.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+uint32_t volatile a_variable;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
