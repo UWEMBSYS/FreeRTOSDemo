@@ -62,7 +62,7 @@ void HAL_MspInit(void)
   HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
 
   /* USER CODE BEGIN MspInit 1 */
-
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 10, 0);
   /* USER CODE END MspInit 1 */
 }
 
