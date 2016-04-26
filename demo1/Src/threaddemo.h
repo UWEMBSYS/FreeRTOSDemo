@@ -1,8 +1,13 @@
 #pragma once
 #include <stdint.h>
 #include "stm32f4xx_hal.h"
+#include "FreeRTOS.h"
+#include <queue.h>
 
-extern volatile uint32_t a_variable;
+/* Queue will holds uint32_t  */
+typedef uint32_t QueueEntry_t;
+
+extern QueueHandle_t hQueue;
 
 /* monitor the USER button */
 extern void task1_entry(void* p);

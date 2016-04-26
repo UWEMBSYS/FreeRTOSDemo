@@ -14,11 +14,13 @@ static bool get_button(void)
 void task2_entry(void* p)
 {
   while (1) {
+    QueueEntry_t a_variable;
     if (get_button()) {
       a_variable = 1;
     } else {
       a_variable = 0;
     }
+     xQueueSend(hQueue, &a_variable, portMAX_DELAY);
   }
   
 }

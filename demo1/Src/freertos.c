@@ -44,6 +44,7 @@
 
 /* Variables -----------------------------------------------------------------*/
 TaskHandle_t task1,task2;
+QueueHandle_t hQueue;
 
 /* USER CODE BEGIN Variables */
 
@@ -90,6 +91,12 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
+  hQueue = xQueueCreate(1, sizeof(QueueEntry_t));
+  if (NULL == hQueue) {
+    printf("Queue create fail, clenaup and don't run the tasks\r\n");
+    while(1);
+  }
+  
   /* USER CODE END RTOS_QUEUES */
 }
 
